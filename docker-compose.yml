@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  ent-grid-ui:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - API_BASE=https://localhsot:8080
