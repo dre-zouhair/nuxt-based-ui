@@ -1,4 +1,6 @@
-export default function useCounter() {
+import type {Token} from "~/store/auth";
+
+export default function useBaseAPI() {
     const runtimeConfig = useRuntimeConfig();
 
     const paths: {
@@ -12,8 +14,16 @@ export default function useCounter() {
         return `${runtimeConfig.public.apiBase}${paths[path]}`;
     }
 
+    const getHeaders = (token: Token): HeadersInit => {
+        return {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token
+        }
+    }
+
     return {
         getApiUrl,
+        getHeaders
     }
 }
 

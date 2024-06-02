@@ -29,7 +29,13 @@ export default defineNuxtConfig({
 
     css: ['~/assets/css/main.scss'],
 
-    modules: ["@nuxtjs/i18n", "@nuxt/ui", '@nuxtjs/google-fonts', "@pinia/nuxt"],
+    modules: [
+        "@nuxtjs/i18n",
+        "@nuxt/ui",
+        '@nuxtjs/google-fonts',
+        "@pinia/nuxt",
+        "@pinia-plugin-persistedstate/nuxt"
+    ],
 
     i18n: {
         vueI18n: './i18n.config.ts'

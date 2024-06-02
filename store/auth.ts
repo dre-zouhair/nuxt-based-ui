@@ -1,25 +1,30 @@
+export type Token = string | undefined | null;
+
 export const useAuthStore = defineStore("auth", () => {
     const token = useCookie("token");
 
-    const { getApiUrl } = useBaseAPI();
+    const {getApiUrl, getHeaders} = useBaseAPI();
 
     const login = async (credentials: { email: string, password: string }) => {
-        // Replace with your login API request
         const response = await fetch(getApiUrl('login'), {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            method: "POST",
+            headers: getHeaders(token.value as Token),
+
             body: JSON.stringify(credentials)
-        })
+        });
         const data = await response.json()
         if (data.token) {
             token.value = data.token
         }
     }
 
-    const logout = () => {
-        token.value = ''
+    const logout = async () => {
+        const response = await fetch(getApiUrl('logout'), {
+            headers: getHeaders(token.value as Token),
+            method: "DELETE",
+        });
+        token.value = undefined;
+        navigateTo("/auth/login")
     }
 
     return {
