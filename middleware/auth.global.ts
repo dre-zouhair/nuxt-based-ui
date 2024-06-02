@@ -11,7 +11,7 @@ export default defineNuxtRouteMiddleware((to: RouteLocationNormalized, _) => {
 
     if (!payload.valid) {
         abortNavigation();
-        return navigateTo('/auth/login');
+        return navigateTo('/login');
     }
 
     // continue token validation

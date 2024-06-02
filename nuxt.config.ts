@@ -6,7 +6,9 @@ export default defineNuxtConfig({
             enabled: true
         }
     },
+
     ssr: false,
+
     runtimeConfig: {
         // The private keys which are only available within server-side
         apiSecret: process.env.API_SECRET,
@@ -15,5 +17,12 @@ export default defineNuxtConfig({
             apiBase: process.env.API_BASE
         }
     },
-    css: ['~/assets/css/main.scss']
+
+    css: ['~/assets/css/main.scss'],
+
+    modules: ["@nuxtjs/i18n"],
+
+    i18n: {
+        vueI18n: './i18n.config.ts'
+    }
 })
