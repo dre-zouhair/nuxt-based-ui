@@ -19,6 +19,10 @@ export default defineNuxtConfig({
         }
     },
 
+    imports: {
+        dirs: ['store'],
+    },
+
     colorMode: {
         preference: 'light'
     },
