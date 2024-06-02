@@ -14,7 +14,8 @@ export default defineNuxtConfig({
         apiSecret: process.env.API_SECRET,
         // Keys within public, will be also exposed to the client-side
         public: {
-            apiBase: process.env.API_BASE
+            apiBase: process.env.API_BASE,
+            defaultFontFamily: `'IBM Plex Sans Arabic', sans-serif`
         }
     },
 
@@ -24,9 +25,17 @@ export default defineNuxtConfig({
 
     css: ['~/assets/css/main.scss'],
 
-    modules: ["@nuxtjs/i18n", "@nuxt/ui"],
+    modules: ["@nuxtjs/i18n", "@nuxt/ui", '@nuxtjs/google-fonts'],
 
     i18n: {
         vueI18n: './i18n.config.ts'
+    },
+
+    googleFonts: {
+        families: {
+            'IBM+Plex+Sans+Arabic': {
+                wght: [400, 700]
+            }
+        }
     }
 })
